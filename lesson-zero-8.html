@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson Zero | Educational Video Production</title>
+    <!-- Adobe Fonts -->
+    <link rel="stylesheet" href="https://use.typekit.net/mhe7oqx.css">
+    <!-- Google Fonts fallback for Archivo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blue-deep: #0d1b2a;
+            --blue-dark: #1b3a4b;
+            --blue-mid: #2d5a7b;
+            --blue-bright: #4a90b8;
+            --blue-light: #a8d0e6;
+            --white: #f8fafc;
+            --cream: #fefdfb;
+            --yellow-highlight: #facc15;
+            --yellow-accent: #facc15;
+            --grid-line: rgba(74, 144, 184, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Archivo', sans-serif;
+            background: var(--blue-deep);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* Blueprint grid background - only on hero */
+        .grid-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+            background-image: 
+                linear-gradient(var(--grid-line) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        /* Video Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .hero-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.4) saturate(0.8);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                180deg,
+                rgba(13, 27, 42, 0.4) 0%,
+                rgba(13, 27, 42, 0.6) 50%,
+                rgba(13, 27, 42, 0.85) 100%
+            );
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            max-width: 900px;
+            padding: 2rem;
+        }
+
+        .logo {
+            font-family: rockwell, serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s ease-out 0.3s forwards;
+        }
+
+        .logo span {
+            color: var(--yellow-highlight);
+        }
+
+        .tagline {
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            font-weight: 500;
+            color: var(--blue-light);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 1s ease-out 0.6s forwards;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0;
+            animation: fadeUp 1s ease-out 1.2s forwards;
+        }
+
+        .scroll-indicator span {
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--blue-light);
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(180deg, var(--blue-light), transparent);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        /* Scrolling sections with video background */
+        .scroll-section {
+            position: relative;
+            z-index: 2;
+        }
+
+        .sticky-video-wrapper {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .sticky-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Brighter video - minimal filtering */
+            filter: brightness(0.85) saturate(1);
+        }
+
+        /* Very subtle vignette instead of heavy overlay */
+        .sticky-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(
+                ellipse at center,
+                transparent 0%,
+                rgba(13, 27, 42, 0.3) 100%
+            );
+        }
+
+        .scroll-content {
+            position: relative;
+            z-index: 1;
+            margin-top: -100vh;
+        }
+
+        .content-block {
+            min-height: 100vh;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-start;
+            padding: 4rem;
+            padding-bottom: 6rem;
+        }
+
+        .content-inner {
+            max-width: 600px;
+            background: var(--blue-deep);
+            padding: 2.5rem;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .content-inner.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--yellow-accent);
+            margin-bottom: 1rem;
+        }
+
+        .section-heading {
+            font-family: rockwell, serif;
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.25rem;
+            color: var(--white);
+        }
+
+        .highlight {
+            display: inline;
+            background-color: var(--yellow-highlight);
+            padding: 0.02em 0.2em 0.18em 0.2em;
+            margin: 0 -0.05em;
+        }
+
+        .section-text {
+            font-size: 1rem;
+            line-height: 1.75;
+            color: var(--blue-light);
+        }
+
+        .section-text + .section-text {
+            margin-top: 1rem;
+        }
+
+        /* Work Section */
+        .work-section {
+            background: var(--cream);
+            color: var(--blue-deep);
+            position: relative;
+            z-index: 3;
+            padding: 6rem 2rem;
+        }
+
+        .work-section .grid-bg {
+            background-image: 
+                linear-gradient(rgba(13, 27, 42, 0.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(13, 27, 42, 0.06) 1px, transparent 1px);
+        }
+
+        .work-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+        }
+
+        .work-header .section-label {
+            color: var(--blue-mid);
+        }
+
+        .work-header .section-heading {
+            font-family: rockwell, serif;
+            font-weight: 700;
+            color: var(--blue-deep);
+        }
+
+        .work-header .section-text {
+            color: var(--blue-dark);
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .video-card {
+            position: relative;
+            aspect-ratio: 16/9;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(13, 27, 42, 0.15);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(13, 27, 42, 0.25);
+        }
+
+        .video-card video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .video-card:hover video {
+            transform: scale(1.05);
+        }
+
+        .video-card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem 1.5rem 1.5rem;
+            background: linear-gradient(transparent, rgba(13, 27, 42, 0.9));
+            color: var(--white);
+        }
+
+        .video-card-title {
+            font-family: rockwell, serif;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .video-card-subtitle {
+            font-size: 0.875rem;
+            color: var(--blue-light);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--blue-deep);
+            padding: 8rem 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 3;
+        }
+
+        .cta-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta-heading {
+            font-family: rockwell, serif;
+            font-weight: 700;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-text {
+            font-size: 1.125rem;
+            color: var(--blue-light);
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: var(--yellow-accent);
+            color: var(--blue-deep);
+            font-family: 'Archivo', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-decoration: none;
+            padding: 1.25rem 2.5rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: #fde047;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(250, 204, 21, 0.3);
+        }
+
+        .cta-button svg {
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover svg {
+            transform: translateX(4px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--blue-deep);
+            border-top: 1px solid var(--grid-line);
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 3;
+        }
+
+        .footer-logo {
+            font-family: rockwell, serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-text {
+            font-size: 0.875rem;
+            color: var(--blue-mid);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .content-block {
+                padding: 2rem;
+                padding-bottom: 4rem;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .content-inner {
+                padding: 2rem;
+            }
+
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="grid-bg"></div>
+        <div class="hero-video-container">
+            <video class="hero-video" autoplay muted loop playsinline>
+                <source src="https://lessonstep-videos.b-cdn.net/hero5.mp4" type="video/mp4">
+            </video>
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="logo">Lesson <span>Zero</span></h1>
+            <p class="tagline">Educational Video Production</p>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- Scrolling Content with Sticky Video -->
+    <section class="scroll-section">
+        <div class="sticky-video-wrapper">
+            <video class="sticky-video" autoplay muted loop playsinline>
+                <source src="https://lessonstep-videos.b-cdn.net/hero5.mp4" type="video/mp4">
+            </video>
+            <div class="sticky-overlay"></div>
+        </div>
+
+        <div class="scroll-content">
+            <div class="content-block">
+                <div class="content-inner" data-animate>
+                    <span class="section-label">The Problem</span>
+                    <h2 class="section-heading">EdTech deserves better than <span class="highlight">generic marketing</span></h2>
+                    <p class="section-text">Most video agencies don't understand education. They make flashy content that impresses executives but fails to resonate with the people who actually make purchasing decisions: teachers, instructional designers, and curriculum coordinators.</p>
+                    <p class="section-text">They've seen a thousand product demos. They can smell marketing from a mile away.</p>
+                </div>
+            </div>
+
+            <div class="content-block">
+                <div class="content-inner" data-animate>
+                    <span class="section-label">Our Approach</span>
+                    <h2 class="section-heading">We speak <span class="highlight">educator</span></h2>
+                    <p class="section-text">Lesson Zero was founded by educators and instructional designers who've spent years in the classroom, in faculty development, and in learning experience design.</p>
+                    <p class="section-text">We understand what makes a product genuinely useful for teaching and learning — and we know how to tell that story in a way that builds trust with your audience.</p>
+                </div>
+            </div>
+
+            <div class="content-block">
+                <div class="content-inner" data-animate>
+                    <span class="section-label">The Result</span>
+                    <h2 class="section-heading">Videos that <span class="highlight">educate</span> about your education product</h2>
+                    <p class="section-text">We don't just make your product look good. We demonstrate its pedagogical value. We show real use cases. We help educators see themselves using your tool in their own practice.</p>
+                    <p class="section-text">Because the best marketing for education products isn't marketing at all — it's teaching.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Section -->
+    <section class="work-section">
+        <div class="work-header">
+            <span class="section-label">Selected Work</span>
+            <h2 class="section-heading">Stories of innovative teaching</h2>
+            <p class="section-text">Case studies showing how educators use technology to transform the learning experience.</p>
+        </div>
+        <div class="video-grid">
+            <div class="video-card">
+                <video autoplay muted loop playsinline>
+                    <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" type="video/mp4">
+                </video>
+                <div class="video-card-overlay">
+                    <h3 class="video-card-title">Active Learning Spaces</h3>
+                    <p class="video-card-subtitle">Cornell University</p>
+                </div>
+            </div>
+            <div class="video-card">
+                <video autoplay muted loop playsinline>
+                    <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4" type="video/mp4">
+                </video>
+                <div class="video-card-overlay">
+                    <h3 class="video-card-title">Peer Instruction at Scale</h3>
+                    <p class="video-card-subtitle">Cornell University</p>
+                </div>
+            </div>
+            <div class="video-card">
+                <video autoplay muted loop playsinline>
+                    <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4" type="video/mp4">
+                </video>
+                <div class="video-card-overlay">
+                    <h3 class="video-card-title">Simulation-Based Learning</h3>
+                    <p class="video-card-subtitle">Cornell University</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2 class="cta-heading">Let's tell your story</h2>
+            <p class="cta-text">Ready to create video content that resonates with educators? Let's talk about your product and your audience.</p>
+            <a href="mailto:hello@lessonzero.com" class="cta-button">
+                Get in Touch
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">Lesson Zero</div>
+        <p class="footer-text">© 2025 Lesson Zero. Educational video production.</p>
+    </footer>
+
+    <script>
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '-10% 0px -10% 0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('[data-animate]').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Pause videos when not in viewport (performance)
+        const videoObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const video = entry.target;
+                if (entry.isIntersecting) {
+                    video.play().catch(() => {});
+                } else {
+                    video.pause();
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('video').forEach(video => {
+            videoObserver.observe(video);
+        });
+    </script>
+</body>
+</html>
