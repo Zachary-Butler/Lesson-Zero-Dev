@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+    ============================================
+    LESSON ZERO - WEBSITE MVP
+    ============================================
+
+    PAGE STRUCTURE OVERVIEW:
+    1. Hero Section (Full screen)
+       - Fixed background video
+       - Blue grid overlay (fades out on scroll)
+       - Logo, tagline, scroll indicator
+
+    2. Scrolling Content Sections (over video)
+       - The Problem
+       - Our Approach
+       - The Result
+
+    3. Work Section (cream background)
+       - Portfolio video grid
+
+    4. CTA Section
+       - Contact button
+
+    5. Footer
+
+    KEY FEATURES:
+    - Fixed video background throughout
+    - Grid overlay fades on scroll
+    - Content blocks fade in when scrolled into view
+    - Videos pause when off-screen (performance)
+    - Fully responsive design
+
+    ============================================
+-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson Zero | Educational Video Production</title>
+
+    <!-- Adobe Fonts -->
+    <link rel="stylesheet" href="https://use.typekit.net/mhe7oqx.css">
+
+    <!-- Google Fonts fallback for Archivo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- External Stylesheets -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Lesson Zero</a>
+            <ul class="nav-menu">
+                <button class="mobile-menu-close" aria-label="Close navigation menu">✕</button>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">☰</button>
+        </div>
+    </nav>
+
+    <!-- Fixed background video -->
+    <div class="hero-video-container">
+        <video class="hero-video" autoplay muted loop playsinline aria-label="Background video showing Lesson Zero's educational video production work">
+            <source src="https://lessonstep-videos.b-cdn.net/hero5.mp4" type="video/mp4">
+            <!-- Fallback text if video doesn't load -->
+            <p>Your browser doesn't support video playback.</p>
+        </video>
+        <div class="hero-overlay"></div>
+    </div>
+
+    <!-- Grid overlay -->
+    <div class="grid-bg"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="logo">Lesson <span>Zero</span></h1>
+            <p class="tagline">Before your product reaches the classroom, you need Lesson Zero - EdTech marketing that educators actually trust.</p>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- Scrolling Content -->
+    <section class="scroll-section">
+        <div class="scroll-content">
+            <div class="content-block">
+                <div class="content-inner" data-animate>
+                    <span class="section-label">The Problem</span>
+                    <h2 class="section-heading">EdTech deserves better than <span class="highlight">generic marketing</span></h2>
+                    <p class="section-text">Another login. Another setup tutorial. Another layer between teacher and student. Educators are exhausted by technology that promises to help but creates more work.</p>
+                    <p class="section-text">We create videos that show how your EdTech product is different - how it brings teachers closer to learning, not further from it. Because we understand both the craft of filmmaking and the reality of teaching.</p>
+                </div>
+            </div>
+
+            <div class="content-block">
+                <div class="content-inner" data-animate>
+                    <span class="section-label">Our Approach</span>
+                    <h2 class="section-heading">We speak <span class="highlight">educator</span></h2>
+                    <p class="section-text">Lesson Zero was founded by a documentary filmmaker and former educator who spent years in the classroom before producing educational videos at Cornell's Center for Teaching Innovation.</p>
+                    <p class="section-text">We help EdTech companies create marketing that speaks to teachers about solving real problems, not just selling features.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Teaser Section -->
+    <section class="services-teaser">
+        <div class="services-teaser-container">
+            <div class="services-teaser-content" data-animate>
+                <span class="section-label">Our Services</span>
+                <h2 class="section-heading">Find the video that <span class="highlight">fits your business</span></h2>
+                <p class="section-text">We offer video production services designed to meet EdTech companies at every stage - whether you're testing your first concept, ready to launch professionally, or have real users whose stories need to be told.</p>
+                <a href="services.html" class="cta-button">View Services & Pricing</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Section -->
+    <section class="work-section">
+        <div class="work-header">
+            <span class="section-label">Selected Work</span>
+            <h2 class="section-heading">Stories of innovative teaching</h2>
+            <p class="section-text">Case studies showing how educators use technology to transform the learning experience.</p>
+        </div>
+        <div class="video-grid">
+            <div class="video-card">
+                <video autoplay muted loop playsinline>
+                    <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" type="video/mp4">
+                </video>
+                <div class="video-card-overlay">
+                    <h3 class="video-card-title">Active Learning Spaces</h3>
+                    <p class="video-card-subtitle">Cornell University</p>
+                </div>
+            </div>
+            <div class="video-card">
+                <video autoplay muted loop playsinline>
+                    <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4" type="video/mp4">
+                </video>
+                <div class="video-card-overlay">
+                    <h3 class="video-card-title">Peer Instruction at Scale</h3>
+                    <p class="video-card-subtitle">Cornell University</p>
+                </div>
+            </div>
+            <div class="video-card">
+                <video autoplay muted loop playsinline>
+                    <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4" type="video/mp4">
+                </video>
+                <div class="video-card-overlay">
+                    <h3 class="video-card-title">Simulation-Based Learning</h3>
+                    <p class="video-card-subtitle">Cornell University</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2 class="cta-heading">Let's tell your story</h2>
+            <p class="cta-text">Ready to create video content that resonates with educators? Let's talk about your product and your audience.</p>
+            <a href="contact.html" class="cta-button">
+                Let's Talk About Your Story
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">Lesson Zero</div>
+        <p class="footer-text">© 2025 Lesson Zero. Educational video production.</p>
+    </footer>
+
+    <!-- External JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>

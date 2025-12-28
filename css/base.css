@@ -1,0 +1,326 @@
+/* ============================================
+   LESSON ZERO - BASE STYLES
+   Shared styles used across all pages
+   ============================================ */
+
+/* ============================================
+   CSS CUSTOM PROPERTIES (VARIABLES)
+   These define reusable colors throughout the site.
+   To change a color globally, just update it here!
+   ============================================ */
+:root {
+    --blue-deep: #0d1b2a;        /* Darkest blue - main background */
+    --blue-dark: #1b3a4b;        /* Dark blue - secondary backgrounds */
+    --blue-mid: #2d5a7b;         /* Medium blue - accents */
+    --blue-bright: #4a90b8;      /* Bright blue - highlights */
+    --blue-light: #a8d0e6;       /* Light blue - text on dark backgrounds */
+    --white: #f8fafc;            /* Off-white for main text */
+    --cream: #fefdfb;            /* Cream color for light sections */
+    --yellow-highlight: #facc15; /* Yellow for text highlights */
+    --yellow-accent: #facc15;    /* Yellow for buttons and accents */
+    --grid-line: rgba(74, 144, 184, 0.15); /* Semi-transparent grid lines */
+}
+
+/* Reset default browser styles for consistency across browsers */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Makes width/height include padding and border */
+}
+
+/* Enable smooth scrolling when clicking anchor links */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Archivo', sans-serif;
+    background: var(--blue-deep);
+    color: var(--white);
+    overflow-x: hidden; /* Prevent horizontal scrollbar */
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+
+/* Yellow highlight background for emphasized words */
+.highlight {
+    display: inline;
+    background-color: var(--yellow-highlight);
+    padding: 0.02em 0.2em 0.18em 0.2em; /* Precise padding for visual balance */
+    margin: 0 -0.05em;       /* Slight negative margin to compensate for padding */
+}
+
+/* Small label above headings (e.g., "THE PROBLEM") */
+.section-label {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;   /* Wide spacing for uppercase text */
+    text-transform: uppercase;
+    color: var(--yellow-accent);
+    margin-bottom: 1rem;
+}
+
+/* Main section headings */
+.section-heading {
+    font-family: rockwell, serif;
+    font-size: clamp(1.75rem, 4vw, 2.5rem); /* Responsive size */
+    font-weight: 700;
+    line-height: 1.2;        /* Tight line height for large text */
+    margin-bottom: 1.25rem;
+    color: var(--white);
+}
+
+/* Body text paragraphs */
+.section-text {
+    font-size: 1rem;
+    line-height: 1.75;       /* Comfortable reading line height */
+    color: var(--blue-light);
+}
+
+/* Add space between consecutive paragraphs */
+/* CSS selector: .section-text + .section-text means
+   "a .section-text that immediately follows another .section-text" */
+.section-text + .section-text {
+    margin-top: 1rem;
+}
+
+/* ============================================
+   NAVIGATION
+   ============================================ */
+
+.main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;              /* Layer 10: Above all page content */
+    transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+/* Transparent nav on homepage (when at top of page) */
+.main-nav.transparent {
+    background-color: transparent;
+}
+
+/* Solid nav (on scroll or on other pages) */
+.main-nav.solid {
+    background-color: rgba(13, 27, 42, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--grid-line);
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-logo {
+    font-family: rockwell, serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-logo:hover {
+    color: var(--yellow-accent);
+}
+
+.nav-menu {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-menu li {
+    margin: 0;
+}
+
+.nav-menu a {
+    color: var(--blue-light);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.nav-menu a:hover {
+    color: var(--white);
+}
+
+/* Active page indicator */
+.nav-menu a.active {
+    color: var(--yellow-accent);
+}
+
+.nav-menu a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -0.5rem;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--yellow-accent);
+}
+
+/* Mobile menu toggle button */
+.mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    line-height: 1;
+}
+
+/* Mobile menu close button - hidden on desktop */
+.mobile-menu-close {
+    display: none;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 1rem 1.5rem;
+    }
+
+    .mobile-menu-toggle {
+        display: block;
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        max-width: 300px;
+        height: 100vh;
+        background-color: var(--blue-deep);
+        flex-direction: column;
+        gap: 0;
+        padding: 5rem 2rem 2rem;
+        transition: right 0.3s ease;
+        border-left: 1px solid var(--grid-line);
+    }
+
+    .nav-menu.active {
+        right: 0;
+    }
+
+    .nav-menu li {
+        border-bottom: 1px solid var(--grid-line);
+    }
+
+    .nav-menu a {
+        display: block;
+        padding: 1.25rem 0;
+        font-size: 1.1rem;
+    }
+
+    .nav-menu a.active::after {
+        display: none;
+    }
+
+    /* Close button for mobile menu */
+    .mobile-menu-close {
+        display: none;
+    }
+
+    .nav-menu.active .mobile-menu-close {
+        display: block;
+        position: absolute;
+        top: 1.5rem;
+        right: 1.5rem;
+        font-size: 1.5rem;
+        color: var(--blue-light);
+        cursor: pointer;
+        background: none;
+        border: none;
+        padding: 0.5rem;
+        line-height: 1;
+    }
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--yellow-accent);
+    color: var(--blue-deep);
+    font-family: 'Archivo', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    padding: 1.25rem 2.5rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+    background: #fde047;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(250, 204, 21, 0.3);
+}
+
+.cta-button svg {
+    transition: transform 0.3s ease;
+}
+
+.cta-button:hover svg {
+    transform: translateX(4px);
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+footer {
+    background: var(--blue-deep);
+    border-top: 1px solid var(--grid-line);
+    padding: 3rem 2rem;
+    text-align: center;
+    position: relative;
+    z-index: 3;
+}
+
+.footer-logo {
+    font-family: rockwell, serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.footer-text {
+    font-size: 0.875rem;
+    color: var(--blue-mid);
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
