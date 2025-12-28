@@ -1,0 +1,200 @@
+/* ============================================
+   LESSON ZERO - ABOUT PAGE STYLES
+   ============================================ */
+
+/* ============================================
+   ABOUT HERO SECTION
+   ============================================ */
+.about-hero {
+    background: var(--blue-deep);
+    padding: 10rem 2rem 6rem;
+    text-align: center;
+    position: relative;
+}
+
+.about-hero-content {
+    max-width: 900px;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 1s ease-out 0.2s forwards;
+}
+
+.about-heading {
+    font-family: rockwell, serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--white);
+    margin-top: 1rem;
+}
+
+/* ============================================
+   BIO SECTION
+   ============================================ */
+.bio-section {
+    background: var(--blue-dark);
+    padding: 6rem 2rem;
+    min-height: 100vh;
+}
+
+.bio-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 500px;
+    gap: 4rem;
+    align-items: start;
+}
+
+.bio-image-wrapper {
+    position: sticky;
+    top: 8rem;
+    height: fit-content;
+}
+
+.bio-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 1s ease-out 0.4s forwards;
+}
+
+.bio-content {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 1s ease-out 0.6s forwards;
+}
+
+.bio-heading {
+    font-family: rockwell, serif;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+}
+
+.bio-text {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--blue-light);
+    margin-bottom: 1.5rem;
+}
+
+.bio-text:last-child {
+    margin-bottom: 0;
+}
+
+/* ============================================
+   APPROACH SECTION
+   ============================================ */
+.approach-section {
+    background: var(--cream);
+    padding: 6rem 2rem;
+    color: var(--blue-deep);
+}
+
+.approach-container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.approach-content {
+    text-align: center;
+}
+
+.approach-content .section-label {
+    color: var(--blue-mid);
+}
+
+.approach-content .section-heading {
+    color: var(--blue-deep);
+    margin-bottom: 3rem;
+}
+
+.approach-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 3rem;
+    margin-top: 3rem;
+}
+
+.approach-item {
+    text-align: left;
+    padding: 2rem;
+    background: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(13, 27, 42, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.approach-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(13, 27, 42, 0.15);
+}
+
+.approach-item-title {
+    font-family: rockwell, serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--blue-deep);
+    margin-bottom: 1rem;
+}
+
+.approach-item-text {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--blue-dark);
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 1024px) {
+    .bio-container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .bio-image-wrapper {
+        position: static;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-hero {
+        padding: 8rem 2rem 4rem;
+    }
+
+    .bio-section {
+        padding: 4rem 1.5rem;
+    }
+
+    .bio-image-wrapper {
+        max-width: 400px;
+    }
+
+    .approach-section {
+        padding: 4rem 1.5rem;
+    }
+
+    .approach-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
