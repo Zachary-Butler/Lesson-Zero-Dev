@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Lesson Zero</title>
+
+    <!-- Adobe Fonts -->
+    <link rel="stylesheet" href="https://use.typekit.net/mhe7oqx.css">
+
+    <!-- Google Fonts fallback for Archivo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- External Stylesheets -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/contact.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="main-nav solid">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Lesson Zero</a>
+            <ul class="nav-menu">
+                <button class="mobile-menu-close" aria-label="Close navigation menu">✕</button>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">☰</button>
+        </div>
+    </nav>
+
+    <!-- Contact Hero Section -->
+    <section class="contact-hero">
+        <div class="contact-hero-content">
+            <span class="section-label">Contact</span>
+            <h1 class="contact-heading">Let's talk about your <span class="highlight">project</span></h1>
+            <p class="contact-subheading">Tell me about your EdTech product and what you're hoping to accomplish. I'll get back to you within one business day.</p>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="contact-form-section">
+        <div class="contact-form-container">
+            <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="contact-form">
+                <!-- Honeypot field for spam protection -->
+                <p class="hidden">
+                    <label>Don't fill this out if you're human: <input name="bot-field"></label>
+                </p>
+
+                <!-- Name -->
+                <div class="form-group">
+                    <label for="name" class="form-label">Name <span class="required">*</span></label>
+                    <input type="text" id="name" name="name" required class="form-input">
+                </div>
+
+                <!-- Email -->
+                <div class="form-group">
+                    <label for="email" class="form-label">Email <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" required class="form-input">
+                </div>
+
+                <!-- Company -->
+                <div class="form-group">
+                    <label for="company" class="form-label">Company / Organization</label>
+                    <input type="text" id="company" name="company" class="form-input">
+                </div>
+
+                <!-- Role -->
+                <div class="form-group">
+                    <label for="role" class="form-label">Your Role</label>
+                    <select id="role" name="role" class="form-select">
+                        <option value="">Select your role</option>
+                        <option value="Founder / CEO">Founder / CEO</option>
+                        <option value="Marketing">Marketing</option>
+                        <option value="Product">Product</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <!-- Service Tier -->
+                <div class="form-group">
+                    <label for="service-tier" class="form-label">Which service tier interests you?</label>
+                    <select id="service-tier" name="service-tier" class="form-select">
+                        <option value="">Select a tier</option>
+                        <option value="Bootstrap ($1,799)">Bootstrap ($1,799)</option>
+                        <option value="Launch ($4,599)">Launch ($4,599)</option>
+                        <option value="Flagship ($8,499)">Flagship ($8,499)</option>
+                        <option value="Not sure yet - help me choose">Not sure yet - help me choose</option>
+                    </select>
+                </div>
+
+                <!-- Timeline -->
+                <div class="form-group">
+                    <label for="timeline" class="form-label">Timeline</label>
+                    <select id="timeline" name="timeline" class="form-select">
+                        <option value="">Select a timeline</option>
+                        <option value="ASAP (within 2-4 weeks)">ASAP (within 2-4 weeks)</option>
+                        <option value="1-2 months">1-2 months</option>
+                        <option value="3+ months">3+ months</option>
+                        <option value="Just exploring options">Just exploring options</option>
+                    </select>
+                </div>
+
+                <!-- Project Description -->
+                <div class="form-group">
+                    <label for="project" class="form-label">Tell me about your project <span class="required">*</span></label>
+                    <textarea id="project" name="project" required class="form-textarea" rows="6" placeholder="What does your EdTech product do? Who is your target audience? What are you hoping this video will accomplish?"></textarea>
+                </div>
+
+                <!-- How did you hear about us -->
+                <div class="form-group">
+                    <label for="referral" class="form-label">How did you hear about Lesson Zero?</label>
+                    <select id="referral" name="referral" class="form-select">
+                        <option value="">Select an option</option>
+                        <option value="Referral">Referral</option>
+                        <option value="Search engine">Search engine</option>
+                        <option value="Social media">Social media</option>
+                        <option value="Conference / event">Conference / event</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="form-submit">
+                    Send Message
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">Lesson Zero</div>
+        <p class="footer-text">© 2025 Lesson Zero. Educational video production.</p>
+    </footer>
+
+    <!-- External JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>
