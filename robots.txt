@@ -1,0 +1,7 @@
+# Lesson Zero - robots.txt
+# Allow all search engines to crawl the site
+
+User-agent: *
+Allow: /
+
+Sitemap: https://lessonzero.studio/sitemap.xml
