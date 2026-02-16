@@ -1,0 +1,228 @@
+/* ============================================
+   LESSON ZERO - WORK PAGE STYLES
+   ============================================ */
+
+/* ============================================
+   WORK HERO SECTION
+   ============================================ */
+.work-hero {
+    background: var(--blue-deep);
+    padding: 10rem 2rem 6rem;
+    text-align: center;
+    position: relative;
+}
+
+.work-hero-content {
+    max-width: 900px;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 1s ease-out 0.2s forwards;
+}
+
+.work-heading {
+    font-family: rockwell, serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--white);
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.work-subheading {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    line-height: 1.6;
+    color: var(--blue-light);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* ============================================
+   FEATURED PROJECT SECTION
+   ============================================ */
+.featured-project {
+    background: var(--cream);
+    color: var(--blue-deep);
+    position: relative;
+    padding: 6rem 2rem;
+}
+
+.featured-project-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.featured-project-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.featured-project-header.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.featured-project-header .section-label {
+    color: var(--blue-mid);
+}
+
+.featured-project-header .section-heading {
+    color: var(--blue-deep);
+}
+
+.featured-project-header .section-text {
+    color: var(--blue-dark);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* ============================================
+   VIDEO EMBED GRID
+   YouTube iframe embeds in responsive grid
+   ============================================ */
+.video-embed-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.video-embed-item {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.video-embed-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.video-embed-wrapper {
+    position: relative;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(13, 27, 42, 0.15);
+    background: var(--blue-deep);
+}
+
+.video-embed-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.video-embed-title {
+    font-family: rockwell, serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--blue-deep);
+    margin-top: 1rem;
+}
+
+/* ============================================
+   PROJECT DETAILS
+   Metadata strip below videos
+   ============================================ */
+.project-details {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    margin-top: 4rem;
+    padding-top: 3rem;
+    border-top: 1px solid rgba(13, 27, 42, 0.1);
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-details.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.detail-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--blue-mid);
+    margin-bottom: 0.5rem;
+}
+
+.detail-value {
+    font-size: 1rem;
+    color: var(--blue-deep);
+    line-height: 1.5;
+}
+
+/* ============================================
+   CTA SECTION (inherits from home.css pattern)
+   ============================================ */
+.work-cta-section {
+    background: var(--blue-deep);
+    padding: 8rem 2rem;
+    text-align: center;
+    position: relative;
+}
+
+.work-cta-section .cta-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.work-cta-section .cta-heading {
+    font-family: rockwell, serif;
+    font-weight: 700;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    margin-bottom: 1.5rem;
+}
+
+.work-cta-section .cta-text {
+    font-size: 1.125rem;
+    color: var(--blue-light);
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 768px) {
+    .work-hero {
+        padding: 8rem 2rem 4rem;
+    }
+
+    .featured-project {
+        padding: 4rem 1.5rem;
+    }
+
+    .video-embed-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-details {
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+        text-align: center;
+    }
+}
