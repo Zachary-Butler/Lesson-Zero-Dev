@@ -172,3 +172,63 @@ const videoObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll('.video-card video').forEach(video => {
     videoObserver.observe(video);
 });
+
+/* ============================================
+   VIDEO LIGHTBOX
+   Opens YouTube videos in a modal overlay
+   ============================================ */
+
+const videoThumbs = document.querySelectorAll('.video-thumb');
+
+if (videoThumbs.length > 0) {
+    const videoModal = document.getElementById('videoModal');
+    const videoModalIframe = document.getElementById('videoModalIframe');
+    const videoModalBackdrop = videoModal.querySelector('.video-modal-backdrop');
+    const videoModalClose = videoModal.querySelector('.video-modal-close');
+    let lastFocusedElement = null;
+
+    function openVideoModal(videoId) {
+        lastFocusedElement = document.activeElement;
+        videoModalIframe.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0';
+        videoModal.classList.add('active');
+        videoModal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('modal-open');
+        videoModalClose.focus();
+    }
+
+    function closeVideoModal() {
+        videoModal.classList.remove('active');
+        videoModal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('modal-open');
+        if (lastFocusedElement) {
+            lastFocusedElement.focus();
+        }
+        setTimeout(function() {
+            videoModalIframe.src = '';
+        }, 400);
+    }
+
+    videoThumbs.forEach(function(thumb) {
+        thumb.addEventListener('click', function() {
+            var videoId = thumb.dataset.videoId;
+            if (videoId) openVideoModal(videoId);
+        });
+
+        thumb.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                var videoId = thumb.dataset.videoId;
+                if (videoId) openVideoModal(videoId);
+            }
+        });
+    });
+
+    videoModalClose.addEventListener('click', closeVideoModal);
+    videoModalBackdrop.addEventListener('click', closeVideoModal);
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && videoModal.classList.contains('active')) {
+            closeVideoModal();
+        }
+    });
+}

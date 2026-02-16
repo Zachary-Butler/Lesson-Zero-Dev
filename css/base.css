@@ -40,6 +40,10 @@ body {
     overflow-x: hidden; /* Prevent horizontal scrollbar */
 }
 
+body.modal-open {
+    overflow: hidden;
+}
+
 /* ============================================
    TYPOGRAPHY
    ============================================ */

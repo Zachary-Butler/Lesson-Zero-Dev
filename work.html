@@ -93,23 +93,32 @@
                 <p class="section-text">We produced a series of documentary-style videos for Cornell University's Center for Teaching Innovation, exploring how faculty use innovative approaches to deepen student learning. Each video tells the story of a real educator experimenting with technology in the classroom &mdash; what they tried, why it mattered, and what their students gained.</p>
             </div>
 
-            <!-- YouTube Embed Grid -->
+            <!-- Video Thumbnail Grid -->
             <div class="video-embed-grid">
                 <div class="video-embed-item" data-animate>
-                    <div class="video-embed-wrapper">
-                        <iframe src="https://www.youtube.com/embed/koZpoVGXSiA" title="LiDAR Learning in Landscape Architecture" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    <div class="video-thumb" data-video-id="koZpoVGXSiA" role="button" tabindex="0" aria-label="Play LiDAR Learning in Landscape Architecture">
+                        <img src="https://img.youtube.com/vi/koZpoVGXSiA/maxresdefault.jpg" alt="LiDAR Learning in Landscape Architecture" loading="lazy">
+                        <div class="video-thumb-play">
+                            <svg width="68" height="68" viewBox="0 0 68 68" fill="none"><circle cx="34" cy="34" r="33" stroke="white" stroke-width="2" fill="rgba(13,27,42,0.5)"/><polygon points="28,20 28,48 50,34" fill="white"/></svg>
+                        </div>
                     </div>
                     <h3 class="video-embed-title">LiDAR Learning in Landscape Architecture</h3>
                 </div>
                 <div class="video-embed-item" data-animate>
-                    <div class="video-embed-wrapper">
-                        <iframe src="https://www.youtube.com/embed/ePxbnNSVYRI" title="Interactive Economics" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    <div class="video-thumb" data-video-id="ePxbnNSVYRI" role="button" tabindex="0" aria-label="Play Interactive Economics">
+                        <img src="https://img.youtube.com/vi/ePxbnNSVYRI/maxresdefault.jpg" alt="Interactive Economics" loading="lazy">
+                        <div class="video-thumb-play">
+                            <svg width="68" height="68" viewBox="0 0 68 68" fill="none"><circle cx="34" cy="34" r="33" stroke="white" stroke-width="2" fill="rgba(13,27,42,0.5)"/><polygon points="28,20 28,48 50,34" fill="white"/></svg>
+                        </div>
                     </div>
                     <h3 class="video-embed-title">Interactive Economics</h3>
                 </div>
                 <div class="video-embed-item" data-animate>
-                    <div class="video-embed-wrapper">
-                        <iframe src="https://www.youtube.com/embed/Ck6Z5QMJB0I" title="Experimenting with Classroom AI" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    <div class="video-thumb" data-video-id="Ck6Z5QMJB0I" role="button" tabindex="0" aria-label="Play Experimenting with Classroom AI">
+                        <img src="https://img.youtube.com/vi/Ck6Z5QMJB0I/maxresdefault.jpg" alt="Experimenting with Classroom AI" loading="lazy">
+                        <div class="video-thumb-play">
+                            <svg width="68" height="68" viewBox="0 0 68 68" fill="none"><circle cx="34" cy="34" r="33" stroke="white" stroke-width="2" fill="rgba(13,27,42,0.5)"/><polygon points="28,20 28,48 50,34" fill="white"/></svg>
+                        </div>
                     </div>
                     <h3 class="video-embed-title">Experimenting with Classroom AI</h3>
                 </div>
@@ -152,6 +161,17 @@
         <div class="footer-logo">Lesson Zero</div>
         <p class="footer-text">&copy; 2025 Lesson Zero. Educational video production.</p>
     </footer>
+
+    <!-- Video Lightbox Modal -->
+    <div class="video-modal" id="videoModal" aria-hidden="true" role="dialog" aria-label="Video player">
+        <div class="video-modal-backdrop"></div>
+        <div class="video-modal-content">
+            <button class="video-modal-close" aria-label="Close video">&times;</button>
+            <div class="video-modal-player">
+                <iframe id="videoModalIframe" src="" title="Video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
 
     <script src="js/main.js"></script>
 </body>
