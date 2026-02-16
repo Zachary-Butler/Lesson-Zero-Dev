@@ -178,7 +178,7 @@ document.querySelectorAll('.video-card video').forEach(video => {
    Opens YouTube videos in a modal overlay
    ============================================ */
 
-const videoThumbs = document.querySelectorAll('.video-thumb');
+const videoThumbs = document.querySelectorAll('[data-video-id]');
 
 if (videoThumbs.length > 0) {
     const videoModal = document.getElementById('videoModal');
