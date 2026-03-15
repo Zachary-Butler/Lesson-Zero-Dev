@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Email Signature — Lesson Zero</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f0f0f0;
+      margin: 0;
+      padding: 40px 24px;
+    }
+    .instructions {
+      max-width: 640px;
+      margin: 0 auto 32px;
+      background: #fff;
+      border-radius: 8px;
+      padding: 24px 28px;
+      border-left: 4px solid #facc15;
+    }
+    .instructions h1 {
+      font-size: 16px;
+      margin: 0 0 8px;
+      color: #0d1b2a;
+    }
+    .instructions ol {
+      margin: 0;
+      padding-left: 20px;
+      color: #444;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+    .instructions a {
+      color: #2d5a7b;
+    }
+    .preview-label {
+      max-width: 640px;
+      margin: 0 auto 8px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #888;
+    }
+    .preview-box {
+      max-width: 640px;
+      margin: 0 auto 40px;
+      background: #ffffff;
+      border-radius: 8px;
+      padding: 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+    }
+    .copy-label {
+      max-width: 640px;
+      margin: 0 auto 8px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #888;
+    }
+    .code-box {
+      max-width: 640px;
+      margin: 0 auto;
+      background: #1e1e1e;
+      border-radius: 8px;
+      padding: 20px;
+      overflow-x: auto;
+    }
+    .code-box pre {
+      margin: 0;
+      color: #d4d4d4;
+      font-size: 12px;
+      line-height: 1.5;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="instructions">
+    <h1>How to use this signature</h1>
+    <ol>
+      <li>Select all the content in the <strong>Preview</strong> box below and copy it (<code>Ctrl+A</code> then <code>Ctrl+C</code>)</li>
+      <li><strong>Gmail:</strong> Settings → See all settings → General → Signature → Create new → paste</li>
+      <li><strong>Apple Mail:</strong> Preferences → Signatures → click <code>+</code> → paste in the right panel</li>
+      <li><strong>Outlook:</strong> Settings → View all settings → Compose and reply → Email signature → paste</li>
+    </ol>
+  </div>
+
+  <div class="preview-label">Preview (select all &amp; copy to use)</div>
+  <div class="preview-box" id="signature-preview">
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!--  EMAIL SIGNATURE — copy everything inside here  -->
+    <!-- ═══════════════════════════════════════════════ -->
+
+    <table cellpadding="0" cellspacing="0" border="0" style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; line-height: 1;">
+      <tr>
+
+        <!-- LZ logomark -->
+        <td style="vertical-align: middle; padding-right: 18px;">
+          <table cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td style="background-color: #0d1b2a; padding: 10px 13px;">
+                <span style="font-family: Georgia, 'Times New Roman', serif; font-size: 28px; font-weight: bold; color: #f8fafc; line-height: 1;">L</span><span style="font-family: Georgia, 'Times New Roman', serif; font-size: 28px; font-weight: bold; color: #facc15; line-height: 1;">Z</span>
+              </td>
+            </tr>
+          </table>
+        </td>
+
+        <!-- Info -->
+        <td style="vertical-align: middle; border-left: 3px solid #facc15; padding-left: 18px;">
+
+          <!-- Brand name -->
+          <table cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td style="padding-bottom: 6px;">
+                <span style="font-family: Georgia, 'Times New Roman', serif; font-size: 14px; font-weight: bold; color: #0d1b2a; letter-spacing: 0.1em;">LESSON </span><span style="font-family: Georgia, 'Times New Roman', serif; font-size: 14px; font-weight: bold; color: #facc15; letter-spacing: 0.1em;">ZERO</span>
+              </td>
+            </tr>
+
+            <!-- Name & title -->
+            <tr>
+              <td style="padding-bottom: 5px;">
+                <span style="font-size: 13px; font-weight: 600; color: #0d1b2a;">Zach Butler</span>
+                <span style="font-size: 13px; color: #bbbbbb; margin: 0 5px;">&middot;</span>
+                <span style="font-size: 13px; color: #4a90b8; font-weight: 400;">Founder</span>
+              </td>
+            </tr>
+
+            <!-- Email -->
+            <tr>
+              <td style="padding-bottom: 2px;">
+                <a href="mailto:zach@lessonzero.studio" style="font-size: 12px; color: #2d5a7b; text-decoration: none;">zach@lessonzero.studio</a>
+              </td>
+            </tr>
+
+            <!-- Website -->
+            <tr>
+              <td>
+                <a href="https://lessonzero.studio" style="font-size: 12px; color: #2d5a7b; text-decoration: none;">lessonzero.studio</a>
+              </td>
+            </tr>
+          </table>
+
+        </td>
+      </tr>
+    </table>
+
+    <!-- ══════════════════════════════════════════ -->
+    <!--  end of signature                         -->
+    <!-- ══════════════════════════════════════════ -->
+
+  </div>
+
+</body>
+</html>

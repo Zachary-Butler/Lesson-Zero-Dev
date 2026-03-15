@@ -476,7 +476,8 @@ footer {
     background: #000;
 }
 
-.video-modal-player iframe {
+.video-modal-player iframe,
+.video-modal-player video {
     position: absolute;
     top: 0;
     left: 0;

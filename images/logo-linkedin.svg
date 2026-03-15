@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+  <defs>
+    <style>
+      @import url('https://use.typekit.net/mhe7oqx.css');
+      .monogram { font-family: "Rockwell", rockwell, serif; font-weight: bold; }
+      .wordmark { font-family: "Rockwell", rockwell, serif; font-weight: normal; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="300" height="300" rx="24" fill="#0d1b2a"/>
+
+  <!-- LZ monogram -->
+  <text class="monogram" x="150" y="185" text-anchor="middle" font-size="160" letter-spacing="-8">
+    <tspan fill="#ffffff">L</tspan><tspan fill="#facc15">Z</tspan>
+  </text>
+
+  <!-- Wordmark -->
+  <text class="wordmark" x="150" y="242" text-anchor="middle" font-size="18" fill="#facc15" letter-spacing="4">LESSON ZERO</text>
+</svg>

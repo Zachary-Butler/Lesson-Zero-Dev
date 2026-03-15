@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Business Card — Lesson Zero</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://use.typekit.net/mhe7oqx.css">
+
+  <style>
+    /* ── Page chrome ── */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #6b7280;
+      font-family: 'Archivo', Arial, sans-serif;
+      padding: 48px 40px 64px;
+      min-height: 100vh;
+    }
+
+    .page-title {
+      color: rgba(255,255,255,0.6);
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .cards-row {
+      display: flex;
+      gap: 80px;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .card-group {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .card-label {
+      color: rgba(255,255,255,0.5);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    /*
+     * Card dimensions: 3.5 × 2 inches
+     * Rendered at 100px/inch → 350 × 200px
+     * Displayed at 2× scale for comfortable screen viewing
+     * (displayed area: 700 × 400px)
+     */
+    .card {
+      width: 350px;
+      height: 200px;
+      transform: scale(2);
+      transform-origin: top left;
+      margin-right: 350px; /* compensate for scale */
+      margin-bottom: 200px;
+      border-radius: 2px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.4), 0 1px 4px rgba(0,0,0,0.3);
+      position: relative;
+    }
+
+    /* ── FRONT ── */
+    .card-front {
+      background: #0d1b2a;
+      display: flex;
+    }
+
+    /* Yellow left accent bar */
+    .front-bar {
+      width: 16px;
+      background: #facc15;
+      flex-shrink: 0;
+      print-color-adjust: exact;
+      -webkit-print-color-adjust: exact;
+    }
+
+    /* LZ monogram — bottom-right stamp */
+    .front-lz {
+      position: absolute;
+      bottom: 18px;
+      right: 18px;
+      font-family: rockwell, Georgia, serif;
+      font-weight: 700;
+      font-size: 13px;
+      line-height: 1;
+      letter-spacing: 0.02em;
+    }
+    .front-lz .l { color: #f8fafc; }
+    .front-lz .z { color: #facc15; }
+
+.front-content {
+      padding: 22px 20px 20px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 16px;
+      flex: 1;
+    }
+
+    .front-name {
+      font-family: rockwell, Georgia, serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: #f8fafc;
+      line-height: 1.1;
+      letter-spacing: 0.01em;
+    }
+
+    .front-title {
+      font-size: 7.5px;
+      font-weight: 600;
+      color: #a8d0e6;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    .front-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 8px;
+      color: rgba(168, 208, 230, 0.8);
+      letter-spacing: 0.03em;
+    }
+
+    .contact-row svg {
+      flex-shrink: 0;
+      opacity: 0.75;
+    }
+
+    .contact-row.url {
+      color: #4a90b8;
+    }
+
+    /* ── BACK ── */
+    .card-back {
+      background: #0d1b2a;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 24px 28px;
+      position: relative;
+    }
+
+    /* Full "Lesson Zero" wordmark — matches website logo */
+    .back-name {
+      font-family: rockwell, Georgia, serif;
+      font-weight: 700;
+      font-size: 30px;
+      line-height: 1;
+      letter-spacing: 0.01em;
+      margin-bottom: 10px;
+    }
+    .back-name .lesson { color: #f8fafc; }
+    .back-name .zero   { color: #facc15; }
+
+    .back-tagline {
+      font-size: 7.5px;
+      font-weight: 500;
+      color: rgba(168, 208, 230, 0.85);
+      text-align: center;
+      line-height: 1.55;
+      max-width: 260px;
+    }
+
+    /* URL bottom-left */
+    .back-url {
+      position: absolute;
+      bottom: 20px;
+      left: 24px;
+      font-size: 6.5px;
+      color: rgba(248, 250, 252, 0.4);
+      letter-spacing: 0.06em;
+    }
+
+    /* QR code bottom-right */
+    .back-qr {
+      position: absolute;
+      bottom: 18px;
+      right: 22px;
+    }
+
+    .back-qr img {
+      width: 28px;
+      height: 28px;
+      display: block;
+      border-radius: 2px;
+    }
+
+    /* ── Print ── */
+    /*
+     * Page is set to BLEED size: 3.75 × 2.25in (trim 3.5×2 + 0.125in bleed on all sides).
+     * Moo requires the design to extend to the outer edge — this ensures no white strips.
+     * Upload the resulting PDF to Moo as-is; their system knows bleed files at this size.
+     */
+    @media print {
+      @page { size: 3.75in 2.25in; margin: 0; }
+
+      body { padding: 0; background: none; min-height: 0; }
+
+      .page-title,
+      .card-label,
+      .instructions { display: none !important; }
+
+      .cards-row { display: block; }
+
+      .card-group:not(:last-child) { break-after: page; }
+
+      .card {
+        width: 3.75in;
+        height: 2.25in;
+        transform: none !important;
+        margin: 0 !important;
+        border-radius: 0;
+        box-shadow: none;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
+    }
+
+    /* ── Instructions ── */
+    .instructions {
+      margin: 64px auto 0;
+      max-width: 560px;
+      background: rgba(0,0,0,0.25);
+      border-radius: 6px;
+      padding: 20px 24px;
+      color: rgba(255,255,255,0.7);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .instructions h3 {
+      color: #facc15;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .instructions ol {
+      padding-left: 18px;
+    }
+
+    .instructions code {
+      background: rgba(255,255,255,0.12);
+      border-radius: 3px;
+      padding: 1px 5px;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <p class="page-title">Lesson Zero — Business Card Design</p>
+
+  <div class="cards-row">
+
+    <!-- ─── FRONT ─── -->
+    <div class="card-group">
+      <div class="card-label">Front</div>
+      <div class="card card-front">
+        <div class="front-bar"></div>
+        <div class="front-lz"><span class="l">L</span><span class="z">Z</span></div>
+        <div class="front-content">
+          <!-- Top: name + title -->
+          <div>
+            <div class="front-name">Zachary Butler</div>
+            <div class="front-title">Founder</div>
+          </div>
+          <!-- Bottom: contact info -->
+          <div class="front-contact">
+            <span class="contact-row">
+              <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.49 2 2 0 0 1 3.6 1.3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              256-682-3753
+            </span>
+            <span class="contact-row">
+              <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              zach@lessonzero.studio
+            </span>
+            <span class="contact-row url">
+              <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              www.lessonzero.studio
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── BACK ─── -->
+    <div class="card-group">
+      <div class="card-label">Back</div>
+      <div class="card card-back">
+        <div class="back-name"><span class="lesson">Lesson </span><span class="zero">Zero</span></div>
+        <div class="back-tagline">EdTech video marketing that connects with educators.</div>
+        <span class="back-url">www.lessonzero.studio</span>
+        <div class="back-qr">
+          <img
+            src="https://api.qrserver.com/v1/create-qr-code/?data=https://lessonzero.studio&size=80x80&color=f8fafc&bgcolor=0d1b2a&margin=3"
+            alt="Scan to visit lessonzero.studio"
+          />
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="instructions">
+    <h3>Exporting for print (Moo.com)</h3>
+    <ol>
+      <li>Open this file in <strong>Chrome</strong> (fonts load via CDN)</li>
+      <li><code>Ctrl+P</code> → set Destination to <strong>"Save as PDF"</strong> (Chrome's built-in, not Adobe PDF) → More settings → check <strong>Background graphics</strong> → Save</li>
+      <li>The PDF will have <strong>2 pages</strong> at 3.75×2.25" (includes 0.125" bleed): page 1 = front, page 2 = back</li>
+      <li>On <strong>moo.com</strong> → Business Cards → Upload Your Own Design → upload the PDF → <strong>do not shrink to fit</strong> → choose <em>Luxe</em> or <em>Super</em> stock</li>
+    </ol>
+  </div>
+
+</body>
+</html>

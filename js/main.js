@@ -178,18 +178,32 @@ document.querySelectorAll('.video-card video').forEach(video => {
    Opens YouTube videos in a modal overlay
    ============================================ */
 
-const videoThumbs = document.querySelectorAll('[data-video-id]');
+const videoThumbs = document.querySelectorAll('[data-video-id], [data-video-src]');
 
 if (videoThumbs.length > 0) {
     const videoModal = document.getElementById('videoModal');
     const videoModalIframe = document.getElementById('videoModalIframe');
+    const videoModalVideo = document.getElementById('videoModalVideo');
     const videoModalBackdrop = videoModal.querySelector('.video-modal-backdrop');
     const videoModalClose = videoModal.querySelector('.video-modal-close');
     let lastFocusedElement = null;
 
-    function openVideoModal(videoId) {
+    function openVideoModal(thumb) {
         lastFocusedElement = document.activeElement;
-        videoModalIframe.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0';
+        var videoSrc = thumb.dataset.videoSrc;
+        var videoId = thumb.dataset.videoId;
+
+        if (videoSrc) {
+            videoModalIframe.style.display = 'none';
+            videoModalVideo.style.display = 'block';
+            videoModalVideo.src = videoSrc;
+            videoModalVideo.play();
+        } else if (videoId) {
+            videoModalVideo.style.display = 'none';
+            videoModalIframe.style.display = 'block';
+            videoModalIframe.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0';
+        }
+
         videoModal.classList.add('active');
         videoModal.setAttribute('aria-hidden', 'false');
         document.body.classList.add('modal-open');
@@ -203,22 +217,24 @@ if (videoThumbs.length > 0) {
         if (lastFocusedElement) {
             lastFocusedElement.focus();
         }
+        videoModalVideo.pause();
         setTimeout(function() {
             videoModalIframe.src = '';
+            videoModalVideo.src = '';
+            videoModalVideo.style.display = 'none';
+            videoModalIframe.style.display = 'block';
         }, 400);
     }
 
     videoThumbs.forEach(function(thumb) {
         thumb.addEventListener('click', function() {
-            var videoId = thumb.dataset.videoId;
-            if (videoId) openVideoModal(videoId);
+            openVideoModal(thumb);
         });
 
         thumb.addEventListener('keydown', function(e) {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
-                var videoId = thumb.dataset.videoId;
-                if (videoId) openVideoModal(videoId);
+                openVideoModal(thumb);
             }
         });
     });

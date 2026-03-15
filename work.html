@@ -80,7 +80,28 @@
         <div class="work-hero-content">
             <span class="section-label">Our Work</span>
             <h1 class="work-heading">Stories of <span class="highlight">innovative teaching</span></h1>
-            <p class="work-subheading">Documentary-style videos that capture how educators transform the learning experience with technology.</p>
+            <p class="work-subheading">Videos that capture how educators transform the learning experience with technology.</p>
+        </div>
+    </section>
+
+    <!-- Zembla Project Section -->
+    <section class="featured-project">
+        <div class="featured-project-container">
+            <div class="featured-project-header" data-animate>
+                <span class="section-label">Featured Project</span>
+                <h2 class="section-heading">Zembla.ai</h2>
+            </div>
+
+            <div class="video-embed-grid video-embed-grid--single">
+                <div class="video-embed-item" data-animate>
+                    <div class="video-thumb" data-video-src="https://lessonstep-videos.b-cdn.net/Zembla_RC02.mp4" role="button" tabindex="0" aria-label="Play Zembla.ai video">
+                        <img src="images/Zembla_RC02.00_01_08_23.Still005.png" alt="Zembla.ai - Accelerated, individualized learning" loading="lazy">
+                        <div class="video-thumb-play">
+                            <svg width="68" height="68" viewBox="0 0 68 68" fill="none"><circle cx="34" cy="34" r="33" stroke="white" stroke-width="2" fill="rgba(13,27,42,0.5)"/><polygon points="28,20 28,48 50,34" fill="white"/></svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -88,7 +109,6 @@
     <section class="featured-project">
         <div class="featured-project-container">
             <div class="featured-project-header" data-animate>
-                <span class="section-label">Featured Project</span>
                 <h2 class="section-heading">Cornell Center for Teaching Innovation</h2>
                 <p class="section-text">We produced a series of documentary-style videos for Cornell University's Center for Teaching Innovation, exploring how faculty use innovative approaches to deepen student learning. Each video tells the story of a real educator experimenting with technology in the classroom &mdash; what they tried, why it mattered, and what their students gained.</p>
             </div>
@@ -169,6 +189,7 @@
             <button class="video-modal-close" aria-label="Close video">&times;</button>
             <div class="video-modal-player">
                 <iframe id="videoModalIframe" src="" title="Video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <video id="videoModalVideo" src="" controls playsinline style="display:none;"></video>
             </div>
         </div>
     </div>

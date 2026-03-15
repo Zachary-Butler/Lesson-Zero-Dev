@@ -13,7 +13,9 @@
       "Bash(rclone ls:*)",
       "Bash(rclone copy:*)",
       "Bash(rclone delete:*)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(ls *.toml *.json *.yml *.yaml)",
+      "Bash(nslookup lessonzero.studio)"
     ]
   }
 }
